@@ -1,14 +1,22 @@
 class UserDict():
-    data = {}
+    contacts = {}
+    path = 'C:\Work Python\home-work-10\home-work-10\contact.txt'
+    with open(path, 'r', encoding="UTF8") as file:
+        while True:
+            line = file.readline()
+            if not line:
+                break
+            line_split = line.split(':')
+            contacts[line_split[0]] = line_split[1].removesuffix('\n')
 
 class AddressBook(UserDict):
-
-
-    def add_record(self, name, phone):
+    def __init__(self, name, phone):
         self.name = name
         self.phone = phone
+
+    def add_record(self):
         print(f"Test: {self.phone}")
-        self.data[self.name] = self.phone
+        self.contacts[self.name] = self.phone
 
 class Field():
     pass
@@ -28,11 +36,11 @@ class Record():
 
     def Name(self):
         
-        return self.name
+        return str(self.name)
 
     def Phone(self):
         
-        return self.phone
+        return str(self.phone)
 
 
 
