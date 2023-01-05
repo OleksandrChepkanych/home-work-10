@@ -1,4 +1,16 @@
-class UserDict():
+from collections import UserDict
+
+class Field:
+    def __init__(self, value) -> None:
+        self.value = value
+
+class Name(Field):
+    pass
+
+class Phone(Field):
+    pass
+
+class Record():
     contacts = {}
     path = 'C:\Work Python\home-work-10\home-work-10\contact.txt'
     with open(path, 'r', encoding="UTF8") as file:
@@ -9,39 +21,25 @@ class UserDict():
             line_split = line.split(':')
             contacts[line_split[0]] = line_split[1].removesuffix('\n')
 
-class AddressBook(UserDict):
-    def __init__(self, name, phone):
+    def __init__(self, name, phone=None):
         self.name = name
-        self.phone = phone
-
-    def add_record(self):
-        print(f"Test: {self.phone}")
-        self.contacts[self.name] = self.phone
-
-class Field():
-    pass
-
-class Name(Field):
-    def __init__(self, name):
-        self.name = str(name)
-
-class Phone(Field):
-    def __init__(self, phone):
-        self.phone = phone
-
-class Record():
-    def __init__(self, name, phone):
-        self.name = name
-        self.phone = phone
-
+        if phone:
+            self.phones = [phone]
+        else:
+            self.phones = []
+    
     def Name(self):
-        
-        return str(self.name)
-
+        if self.name not in self.contacts:
+            self.contacts[self.name] = ""
+    
     def Phone(self):
-        
-        return str(self.phone)
+        if self.name not in self.contacts:
+            self.contacts[self.name] = self.phones
 
+class AddressBook(UserDict):
+    def add_record(self, record: Record) -> None:
+        self.data[record.name.value] = record
+   
 
 
 if __name__ == '__main__':
