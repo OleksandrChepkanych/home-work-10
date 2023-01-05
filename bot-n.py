@@ -11,16 +11,6 @@ class Phone(Field):
     pass
 
 class Record():
-    contacts = {}
-    path = 'C:\Work Python\home-work-10\home-work-10\contact.txt'
-    with open(path, 'r', encoding="UTF8") as file:
-        while True:
-            line = file.readline()
-            if not line:
-                break
-            line_split = line.split(':')
-            contacts[line_split[0]] = line_split[1].removesuffix('\n')
-
     def __init__(self, name, phone=None):
         self.name = name
         if phone:
