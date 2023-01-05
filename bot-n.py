@@ -28,13 +28,15 @@ class Record():
         else:
             self.phones = []
     
-    def Name(self):
-        if self.name not in self.contacts:
-            self.contacts[self.name] = ""
+    def add_phone(self, phone):
+        self.phones.append(phone)
+
+    def dell_phone(self):
+        self.phones.clear
     
-    def Phone(self):
-        if self.name not in self.contacts:
-            self.contacts[self.name] = self.phones
+    def edit_phone(self, phone):
+        self.phones.clear
+        self.phones.append(phone)
 
 class AddressBook(UserDict):
     def add_record(self, record: Record) -> None:
