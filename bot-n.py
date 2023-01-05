@@ -22,10 +22,10 @@ class Record():
         self.phones.append(phone)
 
     def dell_phone(self):
-        self.phones.clear
+        self.phones.clear()
     
     def edit_phone(self, phone):
-        self.phones.clear
+        self.phones.clear()
         self.phones.append(phone)
 
 class AddressBook(UserDict):
