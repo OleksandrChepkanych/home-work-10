@@ -3,6 +3,9 @@ from collections import UserDict
 class Field:
     def __init__(self, value) -> None:
         self.value = value
+   
+    def __eq__(self, other):
+        return self.value == other.value
 
 class Name(Field):
     pass
@@ -21,12 +24,14 @@ class Record():
     def add_phone(self, phone):
         self.phones.append(phone)
 
-    def dell_phone(self):
-        self.phones.clear()
+    def dell_phone(self, phone):
+        if phone in self.phones:
+            self.phones.remove(phone)
     
     def edit_phone(self, phone):
-        self.phones.clear()
-        self.phones.append(phone)
+        if phone in self.phones:
+            self.phones.remove(phone)
+            self.phones.append(input("Enter neu phone: "))
 
 class AddressBook(UserDict):
     def add_record(self, record: Record) -> None:
